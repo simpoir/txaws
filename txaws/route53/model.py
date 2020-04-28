@@ -25,7 +25,7 @@ from ..client._validators import set_of
 @attr.s(frozen=True)
 class Name(object):
     text = attr.ib(
-        convert=lambda v: v + u"." if not v.endswith(u".") else v,
+        converter=lambda v: v + u"." if not v.endswith(u".") else v,
         validator=validators.instance_of(unicode),
     )
 
@@ -365,7 +365,7 @@ class SRV(object):
 @attr.s(frozen=True)
 class TXT(object):
     texts = attr.ib(
-        convert=tuple,
+        converter=tuple,
         validator=validators.instance_of(tuple),
     )
 
